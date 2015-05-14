@@ -1,0 +1,138 @@
+@import '../../bower_components/bourbon/app/assets/stylesheets/bourbon';
+
+@include font-face('Open Sans', '../fonts/opensans-regular-webfont');
+
+@include font-face('Open Sans Bold', '../fonts/opensans-bold-webfont');
+
+$app-width: 1240px;
+$asteroids-radius: 950px;
+
+html, body {
+  min-width: $app-width;
+  font-family: 'Open Sans', sans-serif;
+  background: url('../images/space.jpg') repeat;
+  @include user-select(none);
+}
+
+.app-container {
+  width: $app-width;
+  margin: 0 auto;
+  padding-bottom: 10px;
+
+  h1 {
+    margin-bottom: 25px;
+  }
+
+  .btn, .panel, .panel-heading {
+    border-radius: 0;
+  }
+
+  .btn {
+    box-shadow: 0 5px 5px -6px rgba(0, 0, 0, .3);
+  }
+
+  .btn .btn-block:active, .btn .btn-lg:active {
+    box-shadow: inset 0 3px 3px -5px rgba(0, 0, 0, .3);
+  }
+
+  .panel {
+    position: fixed;
+    top: 125px;
+    width: 200px;
+  }
+
+  .panel-heading {
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 1);
+  }
+
+  .panel-heading .close {
+    margin-top: -2px;
+  }
+}
+
+.canvas-container {
+  z-index: 1;
+  float: right;
+}
+
+.asteroids-belt-container {
+  width: $asteroids-radius;
+  position: absolute;
+  top: 0;
+  right: 65px;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.text-heading {
+  color: #fff;
+  text-align: center;
+  font-size: 48px;
+  text-shadow: 1px 0 1px rgba(160, 160, 170, .5), 0 1px 1px rgba(230, 230, 240, .9),
+  2px 1px 1px rgba(159, 159, 169, .6), 1px 2px 1px rgba(229, 229, 239, .9),
+  3px 2px 1px rgba(158, 158, 168, .7), 2px 3px 1px rgba(228, 228, 238, .9);
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-bold {
+  font-family: 'Open Sans Bold', sans-serif;
+  font-weight: bold;
+}
+
+@function revolution($pl-year-in-days) {
+  @return $pl-year-in-days * 30 / 365 + s
+}
+
+@function stars($s, $max-area, $min-area : 0, $star-size : 0) {
+  $stars: #{$min-area + random($max-area)}px #{$min-area + random($max-area)}px 0 #{$star-size}px rgba(255, 255, 255, 1);
+  @for $i from 1 to $s {
+    $stars: '#{$stars} , #{$min-area + random($max-area)}px #{$min-area + random($max-area)}px 0 #{$star-size}px rgba(255,255,255, 1)'
+  }
+  @return unquote($stars);
+}
+
+.animate-orbit {
+  border-radius: $asteroids-radius;
+
+  &:before {
+    left: 50%;
+    border-radius: 100px;
+    content: '';
+    position: absolute;
+  }
+}
+
+.asteroids-belt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.75;
+  height: $asteroids-radius;
+  width: $asteroids-radius;
+  margin: auto;
+  overflow: hidden;
+  @include animation(orb revolution(3000) linear infinite);
+
+  &:before {
+    top: 50%;
+    height: 210px;
+    width: 210px;
+    margin-left: -105px;
+    margin-top: -105px;
+    box-shadow: stars(500, 900, -900/2, -104);
+  }
+}
+
+@include keyframes(orb) {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

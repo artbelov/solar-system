@@ -1,0 +1,20 @@
+sudo: false
+language: node_js
+git:
+  depth: 10
+branches:
+  only:
+    - master
+node_js:
+  - "0.12"
+cache:
+  directories:
+    - bower_components
+    - node_modules
+install:
+  - npm install -g grunt-cli bower
+  - npm install
+  - bower install
+script:
+  - grunt build
+  - grunt lint

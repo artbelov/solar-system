@@ -1,0 +1,60 @@
+{
+  "name": "solar-system",
+  "title": "Модель Солнечной системы",
+  "description": "Модель Солнечной системы на Canvas.",
+  "version": "1.0.0",
+  "author": "Артём Белов <artbelov@live.ru>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/artbelov/solar-system"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/artbelov/solar-system/blob/master/LICENSE.txt"
+  },
+  "engines": {
+    "node": ">=0.10.1"
+  },
+  "main": "./app/index.html",
+  "window": {
+    "title": "Модель Солнечной системы",
+    "icon": "./app/assets/images/ico/app.png",
+    "toolbar": false,
+    "frame": true,
+    "fullscreen": true,
+    "width": 1240,
+    "height": 600,
+    "min_width": 1240,
+    "min_height": 600,
+    "resizable": true
+  },
+  "devDependencies": {
+    "bower": "^1.4.1",
+    "browser-sync": "^2.7.1",
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^3.0.0",
+    "grunt-banner": "^0.4.0",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-csslint": "^0.4.0",
+    "grunt-contrib-cssmin": "^0.12.2",
+    "grunt-contrib-imagemin": "^0.9.4",
+    "grunt-contrib-jade": "^0.14.1",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-csscomb": "^3.0.0",
+    "grunt-jscs": "^1.8.0",
+    "grunt-modernizr": "^0.6.0",
+    "grunt-newer": "^1.1.0",
+    "grunt-ng-annotate": "^0.10.0",
+    "grunt-node-webkit-builder": "^1.0.2",
+    "grunt-sass": "^1.0.0",
+    "grunt-uncss": "^0.4.2",
+    "grunt-usemin": "^3.0.0",
+    "grunt-wiredep": "^2.0.0",
+    "jit-grunt": "^0.9.1",
+    "time-grunt": "^1.1.1"
+  }
+}

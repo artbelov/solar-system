@@ -1,0 +1,115 @@
+doctype html
+html.no-js(ng-app='solar-system', ng-controller='MainCtrl', ng-strict-di='', lang='ru')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title Модель Солнечной системы
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    // CSS Vendor
+    // build:css assets/styles/vendor.min.css
+    // bower:css
+    // endbower
+    // endbuild
+
+    // CSS Bootstrap
+    link(rel='stylesheet', href='assets/styles/bootstrap.min.css')
+
+    // CSS App
+    link(rel='stylesheet', href='assets/styles/app.min.css')
+
+    // Favicon
+    link(href='assets/images/ico/app.png', rel='icon', type='image/x-icon')
+
+    // Custom Modernizr Build
+    script(src='assets/scripts/modernizr.custom.min.js')
+
+  body.hide
+    .app-container
+      h1.text-white.text-bold.text-heading Модель Солнечной системы
+
+      hr
+
+      .row
+        .col-xs-12
+          canvas#canvas
+
+          .asteroids-belt-container
+            .asteroids-belt.animate-orbit
+
+          .panel.panel-primary.pull-right
+            .panel-heading.text-center.text-bold(ng-if='!planet')
+              i.glyphicon.glyphicon-info-sign
+              | &nbsp; Информация
+
+            .panel-heading.text-center.text-bold(ng-if='planet') {{ planet.nameRu + " (" + planet.nameEn + ")" }}
+              .pull-right.close(ng-click='resetPlanet()') ×
+
+            .panel-body(ng-if='!planet')
+              p.text-center Для получения информации выберите планету или орбиту
+
+              hr
+
+              p.text-center
+                i 1 год Земли = 36.5 сек.
+
+            .panel-body(ng-if='planet')
+              p
+                img.img-thumbnail(ng-src='assets/images/photos/{{planet.nameImg}}.jpg')
+
+              p
+                span.text-bold Диаметр:
+                span &nbsp;{{planet.wiki.diameter}}
+
+              p
+                span.text-bold Масса:
+                span &nbsp;{{planet.wiki.weight}}
+
+              p
+                span.text-bold Орб. радиус:
+                span &nbsp;{{planet.wiki.radius}}
+
+              p
+                span.text-bold Т обращения:
+                span &nbsp;{{planet.wiki.period}}
+
+              p
+                span.text-bold Сутки:
+                span &nbsp;{{planet.wiki.day}}
+
+              p
+                span.text-bold Плотность:
+                span &nbsp;{{planet.wiki.density}} кг/м³
+
+              p
+                span.text-bold Спутники:
+                span &nbsp;{{planet.wiki.satellites}}
+
+              small.text-muted * относительно Земли
+
+            .panel-footer(ng-if='!planet')
+              a.btn.btn-primary.btn-block.btn-sm(ng-click='renderGalaxy()')
+                i.glyphicon.glyphicon-refresh
+                | &nbsp; Перестроить
+
+            .panel-footer(ng-if='planet && online')
+              a.btn.btn-primary.btn-block.btn-sm(ng-href='https://ru.wikipedia.org/wiki/{{planet.wiki.link}}')
+                i.glyphicon.glyphicon-book
+                | &nbsp; Статья на Wikipedia
+
+      hr
+
+      p.text-center.text-bold
+        i.glyphicon.glyphicon-user.text-success
+        span.text-success &nbsp; Разработал&nbsp;
+        a(href='https://github.com/artbelov/') Белов Артём
+
+    // JS Vendor
+    // build:js assets/scripts/vendor.min.js
+    // bower:js
+    // endbower
+    // endbuild
+
+    // JS App
+    script(src='assets/scripts/app.min.js')

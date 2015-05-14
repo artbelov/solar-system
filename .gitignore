@@ -1,0 +1,24 @@
+# OS or Editor folders
+Thumbs.db
+.DS_Store
+._*
+.tmp
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+*.sublime-project
+*.sublime-workspace
+nbproject
+.idea
+*.iml
+atlassian-ide-plugin.xml
+
+## Files and Folders to ignore
+.sass-cache
+npm-debug.log
+app
+node_modules
+bower_components
+nwjs-build
